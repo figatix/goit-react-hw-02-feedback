@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Feedback } from "./Feedback";
+import { Section } from "./Section";
 import { Statistics } from "./Statistics";
 
 
@@ -30,28 +31,31 @@ class App extends Component {
 
   render() {
     this.countPositiveFeedbackPercentage()
-    const {good, neutral, bad} = this.state
+    const { good, neutral, bad } = this.state
 
     return (
 
       <>
-        <Feedback
-          addVote={this.handleFeedbackVote}
-      />
 
-      <Statistics 
+      <Section title="Dude, leave your feedback:) Please!">
+        <Feedback
+        onLeaveFeedback={this.handleFeedbackVote}
+        />
+      </Section>
+
+      <Section title="Statistics of feedbacks">
+        <Statistics 
           goodCount={good}
           neutralCount={neutral}
           badCount={bad}
           total={ this.countTotalFeedback }
           positivePercentage ={this.countPositiveFeedbackPercentage}
-      />
+        />
+        </Section>
+        
       </>
-
     );
   }
-    
-
 }
 
 
