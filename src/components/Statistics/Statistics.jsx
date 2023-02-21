@@ -1,21 +1,25 @@
 import PropTypes from 'prop-types';
 import React, { Component } from "react";
-import Notification from './Notification';
+import Notification from 'components/Notification/Notification';
 
-class Statistics extends Component{
+import { StyledStatList } from './StatList.styled';
+import { StyledStatItem } from './StatItem.styled';
+
+
+class Statistics extends Component {
 
   render() {
     const { goodCount, neutralCount, badCount, total, positivePercentage } = this.props
     console.log(total());
-    
+
     return total() !== 0 ? (
-      <>
-        <p>Good: {goodCount}</p>
-        <p>Neutral: {neutralCount}</p>
-        <p>Bad: {badCount}</p>
-        <p>Total: {total()}</p>
-        <p>Percentage of GOOD feedbacks: {positivePercentage()}%</p>
-      </>
+      <StyledStatList>
+        <StyledStatItem>Good: {goodCount}</StyledStatItem>
+        <StyledStatItem>Neutral: {neutralCount}</StyledStatItem>
+        <StyledStatItem>Bad: {badCount}</StyledStatItem>
+        <StyledStatItem>Total: {total()}</StyledStatItem>
+        <StyledStatItem>Percentage of GOOD feedbacks: {positivePercentage()}%</StyledStatItem>
+      </StyledStatList>
     ) :
       <Notification message="We are sorry... There is no feedback">
       </Notification>
