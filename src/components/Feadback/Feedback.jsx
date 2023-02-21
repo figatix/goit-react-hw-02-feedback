@@ -6,13 +6,14 @@ import { StyledButton } from "./Button.styled";
 class Feedback extends Component {
   render() {
 
-    const { onLeaveFeedback } = this.props;
+    const { onLeaveFeedback, options } = this.props;
 
     return (
       <>
-        <StyledButton type="button" onClick={onLeaveFeedback} id='good'>Good</StyledButton>
-        <StyledButton type="button" onClick={onLeaveFeedback} id='neutral'>Neutral</StyledButton>
-        <StyledButton type="button" onClick={onLeaveFeedback} id='bad'>Bad</StyledButton>
+        {options.map(el => {
+          return (<StyledButton type="button" onClick={onLeaveFeedback} key={el} id={el}>{el.toUpperCase()}</StyledButton>)
+        })
+        }
       </>
     )
   }

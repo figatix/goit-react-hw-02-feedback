@@ -10,7 +10,6 @@ class Statistics extends Component {
 
   render() {
     const { goodCount, neutralCount, badCount, total, positivePercentage } = this.props
-    console.log(total());
 
     return total() !== 0 ? (
       <StyledStatList>

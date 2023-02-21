@@ -43,6 +43,7 @@ class App extends Component {
         <Section title="Dude, leave your feedback:) Please!">
           <Feedback
             onLeaveFeedback={this.handleFeedbackVote}
+            options={['good', 'neutral', 'bad']}
           />
         </Section>
 
