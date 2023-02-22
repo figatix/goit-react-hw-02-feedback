@@ -3,8 +3,10 @@ import React, { Component } from "react";
 import { Feedback } from "../Feadback/Feedback";
 import { Section } from "../Section/Section";
 import { Statistics } from "../Statistics/Statistics";
+import Notification from "components/Notification/Notification";
 
 import { StyledWrapper } from "components/App/Wrapper.styled";
+
 
 
 class App extends Component {
@@ -35,6 +37,8 @@ class App extends Component {
   render() {
     this.countPositiveFeedbackPercentage()
     const { good, neutral, bad } = this.state
+    const total = this.countTotalFeedback();
+    const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage();
 
     return (
 
@@ -48,13 +52,19 @@ class App extends Component {
         </Section>
 
         <Section title="Statistics of feedbacks">
-          <Statistics
-            goodCount={good}
-            neutralCount={neutral}
-            badCount={bad}
-            total={this.countTotalFeedback}
-            positivePercentage={this.countPositiveFeedbackPercentage}
-          />
+
+          {total !== 0 ?
+            <Statistics
+              goodCount={good}
+              neutralCount={neutral}
+              badCount={bad}
+              total={total}
+              positivePercentage={positiveFeedbackPercentage}
+            />
+            :
+            <Notification message="We are sorry... There is no feedback">
+            </Notification>
+          }
         </Section>
 
       </StyledWrapper>
